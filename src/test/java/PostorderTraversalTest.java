@@ -46,10 +46,25 @@ public class PostorderTraversalTest {
     }
 
     @Test
-    public void shouldReturnNodeInCorrectOrder() {
+    public void shouldReturnNodeInCorrectOrder_unBalancedTree() {
         BinaryTree<Integer> binaryTree = CreateBinaryTree.createUnbalancedBinaryTree();
         List<Integer> expectedOrderList = Arrays.asList(4, 6, 2, 8, 16, 12, 1);
         List<Integer> actualList = new ArrayList<>();
+
+        Iterator<Node<Integer>> postorderIterator = binaryTree.getPostorderIterator();
+        while (postorderIterator.hasNext()) {
+            Node<Integer> curr = postorderIterator.next();
+            actualList.add(curr.getValue());
+        }
+        assertEquals(actualList, expectedOrderList);
+    }
+
+    @Test
+    public void shouldReturnNodeInCorrectOrder_balancedTree() {
+        BinaryTree<Integer> binaryTree = CreateBinaryTree.createBalancedBinaryTree();
+        List<Integer> expectedOrderList = Arrays.asList(1, 3, 2, 6, 10, 8, 4);
+        List<Integer> actualList = new ArrayList<>();
+
         Iterator<Node<Integer>> postorderIterator = binaryTree.getPostorderIterator();
         while (postorderIterator.hasNext()) {
             Node<Integer> curr = postorderIterator.next();

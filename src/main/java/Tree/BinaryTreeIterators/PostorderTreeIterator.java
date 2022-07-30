@@ -7,30 +7,35 @@ import java.util.Stack;
 
 public class PostorderTreeIterator<T extends Number> implements Iterator<Node<T>> {
 
-    Stack<Node<T>> stack;
+    Stack<Node<T>> stack1;
+    Stack<Node<T>> stack2;
+
     public PostorderTreeIterator(Node<T> root) {
-        postOrder(root);
-        stack = new Stack<>();
-        if (root != null) stack.push(root);
+        stack1 = new Stack<>();
+        stack2 = new Stack<>();
+        if (root != null) {
+            stack1.push(root);
+            populateSecondStack();
+        }
     }
 
     @Override public boolean hasNext() {
-        return !stack.empty();
+        return !stack2.empty();
     }
 
     @Override public Node<T> next() {
         if (!hasNext()) return null;
-        Node<T> node = stack.pop();
-        if(node.getLeft() != null) stack.push(node.getLeft());
-        if(node.getRight() != null) stack.push(node.getRight());
-        return node;
+        return stack2.pop();
     }
 
-    public void postOrder(Node<T> root) {
-        if (root == null) return;
-        if (root.getLeft() != null) postOrder(root.getLeft());
-        if (root.getRight() != null) postOrder(root.getRight());
-        System.out.println(root.getValue());
+    private void populateSecondStack() {
+        while (!stack1.empty()) {
+            Node<T> temp = stack1.pop();
+            stack2.push(temp);
+
+            if (temp.getLeft() != null) stack1.push(temp.getLeft());
+            if (temp.getRight() != null) stack1.push(temp.getRight());
+        }
     }
 }
 
