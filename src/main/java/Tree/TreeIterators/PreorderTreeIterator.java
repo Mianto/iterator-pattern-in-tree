@@ -28,11 +28,4 @@ public class PreorderTreeIterator<T extends Number> implements Iterator<Node<T>>
         if (tmpNode.getLeft() != null) nodeStack.push(tmpNode.getLeft());
         return tmpNode;
     }
-
-    public void preorder(Node<T> root) {
-        if (root == null) return;
-        System.out.println(root.getValue());
-        if (root.getLeft() != null) preorder(root.getLeft());
-        if (root.getRight() != null) preorder(root.getRight());
-    }
 }

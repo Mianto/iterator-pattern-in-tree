@@ -14,9 +14,7 @@ public class InorderTreeIterator<T extends Number> implements Iterator<Node<T>> 
         curr = root;
     }
 
-    @Override public boolean hasNext() {
-        return !stack.empty() || curr != null;
-    }
+    @Override public boolean hasNext() { return !stack.empty() || curr != null; }
 
     @Override public Node<T> next() {
         if (!hasNext()) return null;
