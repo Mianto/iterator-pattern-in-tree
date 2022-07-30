@@ -1,4 +1,4 @@
-package Tree.TreeIterators;
+package Tree.BinaryTreeIterators;
 
 import Tree.Node;
 

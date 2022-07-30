@@ -1,8 +1,8 @@
 package Tree;
 
-import Tree.TreeIterators.InorderTreeIterator;
-import Tree.TreeIterators.PostorderTreeIterator;
-import Tree.TreeIterators.PreorderTreeIterator;
+import Tree.BinaryTreeIterators.InorderTreeIterator;
+import Tree.BinaryTreeIterators.PostorderTreeIterator;
+import Tree.BinaryTreeIterators.PreorderTreeIterator;
 
 import java.util.Iterator;
 
