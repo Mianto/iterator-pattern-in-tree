@@ -7,22 +7,28 @@ import java.util.Stack;
 
 public class InorderTreeIterator<T extends Number> implements Iterator<Node<T>> {
     Stack<Node<T>> stack;
+    Node<T> curr;
 
     public InorderTreeIterator(Node<T> root) {
         stack = new Stack<>();
-        if (root != null) {
-            stack.push(root);
-        }
+        curr = root;
     }
 
     @Override public boolean hasNext() {
-        return !stack.empty();
+        return !stack.empty() || curr != null;
     }
 
     @Override public Node<T> next() {
         if (!hasNext()) return null;
-        Node<T> node = stack.peek();
-        stack.pop();
+
+        while(curr != null) {
+            stack.push(curr);
+            curr = curr.getLeft();
+        }
+
+        Node<T> node = stack.pop();
+
+        curr = node.getRight();
         return node;
     }
 }

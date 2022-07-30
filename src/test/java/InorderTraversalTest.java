@@ -55,9 +55,22 @@ public class InorderTraversalTest {
     }
 
     @Test
-    public void shouldReturnNodesInSortedOrder() {
-        BinaryTree<Integer> binaryTree = CreateBinaryTree.createBinaryTree();
+    public void shouldReturnNodesInSortedOrder_forUnbalanced() {
+        BinaryTree<Integer> binaryTree = CreateBinaryTree.createUnbalancedBinaryTree();
         List<Integer> sortedList = Arrays.asList(1, 2, 4, 6, 8, 12, 16);
+        List<Integer> actualList = new ArrayList<>();
+        Iterator<Node<Integer>> inorderIterator = binaryTree.getInorderIterator();
+        while (inorderIterator.hasNext()) {
+            Node<Integer> node = inorderIterator.next();
+            actualList.add(node.getValue());
+        }
+        assertEquals(sortedList, actualList);
+    }
+
+    @Test
+    public void shouldReturnNodesInSortedOrder_forBalancedTree() {
+        BinaryTree<Integer> binaryTree = CreateBinaryTree.createBalancedBinaryTree();
+        List<Integer> sortedList = Arrays.asList(1, 2, 3, 4, 6, 8, 10);
         List<Integer> actualList = new ArrayList<>();
         Iterator<Node<Integer>> inorderIterator = binaryTree.getInorderIterator();
         while (inorderIterator.hasNext()) {

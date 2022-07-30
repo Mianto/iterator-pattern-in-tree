@@ -21,19 +21,19 @@ public class MainClass {
             System.out.println(next);
         }
 
-//        BinaryTree.BinaryTree<Double> btd = new BinaryTree.BinaryTree<>();
-//        btd.addNode(12.8);
-//        btd.addNode(8.2);
-//        btd.addNode(16.1);
-//        btd.addNode(11.2);
-//        btd.addNode(2.2);
-//        btd.addNode(6.6);
-//        btd.addNode(4.9);
-//
-//        Iterator<BinaryTree.Node<Double>> treePreorderIterator = btd.getPreorderIterator();
-//        while (treePreorderIterator.hasNext()) {
-//            BinaryTree.Node<Double> next = treePreorderIterator.next();
-//            System.out.println(next);
-//        }
+        BinaryTree<Double> btd = new BinaryTree<>();
+        btd.addNode(12.8);
+        btd.addNode(8.2);
+        btd.addNode(16.1);
+        btd.addNode(11.2);
+        btd.addNode(2.2);
+        btd.addNode(6.6);
+        btd.addNode(4.9);
+
+        Iterator<Node<Double>> treePreorderIterator = btd.getPreorderIterator();
+        while (treePreorderIterator.hasNext()) {
+            Node<Double> next = treePreorderIterator.next();
+            System.out.println(next);
+        }
     }
 }

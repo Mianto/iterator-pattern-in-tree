@@ -46,7 +46,7 @@ class PreorderTraversalTest {
 
     @Test
     public void shouldReturnNodeInCorrectOrder() {
-        BinaryTree<Integer> binaryTree = CreateBinaryTree.createBinaryTree();
+        BinaryTree<Integer> binaryTree = CreateBinaryTree.createUnbalancedBinaryTree();
         List<Integer> expectedOrderList = Arrays.asList(1, 12, 8, 2, 6, 4, 16);
         List<Integer> actualList = new ArrayList<>();
         Iterator<Node<Integer>> preorderIterator = binaryTree.getPreorderIterator();

@@ -47,7 +47,7 @@ public class PostorderTraversalTest {
 
     @Test
     public void shouldReturnNodeInCorrectOrder() {
-        BinaryTree<Integer> binaryTree = CreateBinaryTree.createBinaryTree();
+        BinaryTree<Integer> binaryTree = CreateBinaryTree.createUnbalancedBinaryTree();
         List<Integer> expectedOrderList = Arrays.asList(4, 6, 2, 8, 16, 12, 1);
         List<Integer> actualList = new ArrayList<>();
         Iterator<Node<Integer>> postorderIterator = binaryTree.getPostorderIterator();
