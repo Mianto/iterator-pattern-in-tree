@@ -9,36 +9,37 @@ import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-class PreorderTraversalTest {
+public class PostorderTraversalTest {
     @Test
     public void hasNext_shouldReturnFalseForAnEmptyTree() {
         BinaryTree<Integer> bt = new BinaryTree<>();
-        Iterator<Node<Integer>> preorderIterator = bt.getPreorderIterator();
-        assertFalse(preorderIterator.hasNext(), "shouldReturnFalseForAnEmptyTree");
+        Iterator<Node<Integer>> postorderIterator = bt.getPostorderIterator();
+        assertFalse(postorderIterator.hasNext(), "shouldReturnFalseForAnEmptyTree");
     }
 
     @Test
     public void next_shouldReturnNullForAnEmptyTree() {
         BinaryTree<Integer> bt = new BinaryTree<>();
-        Iterator<Node<Integer>> preorderIterator = bt.getPreorderIterator();
-        assertNull(preorderIterator.next());
+        Iterator<Node<Integer>> postorderIterator = bt.getPostorderIterator();
+        assertNull(postorderIterator.next());
     }
 
     @Test
     public void hasNext_shouldReturnTrueForTreeWithSingleNode() {
         BinaryTree<Integer> bt = new BinaryTree<>();
         bt.addNode(0);
-        Iterator<Node<Integer>> preorderIterator = bt.getPreorderIterator();
-        assertTrue(preorderIterator.hasNext());
+        Iterator<Node<Integer>> postorderIterator = bt.getPostorderIterator();
+        assertTrue(postorderIterator.hasNext());
     }
 
     @Test
     public void next_shouldReturnNodeForTreeWithSingleNode() {
         BinaryTree<Integer> bt = new BinaryTree<>();
         bt.addNode(0);
-        Iterator<Node<Integer>> preorderIterator = bt.getPreorderIterator();
-        Node<Integer> nodeFromIterator = preorderIterator.next();
+        Iterator<Node<Integer>> postorderIterator = bt.getPostorderIterator();
+        Node<Integer> nodeFromIterator = postorderIterator.next();
         assertEquals(nodeFromIterator.getValue(), 0);
         assertNull(nodeFromIterator.getLeft());
         assertNull(nodeFromIterator.getRight());
@@ -47,13 +48,14 @@ class PreorderTraversalTest {
     @Test
     public void shouldReturnNodeInCorrectOrder() {
         BinaryTree<Integer> binaryTree = CreateBinaryTree.createBinaryTree();
-        List<Integer> expectedOrderList = Arrays.asList(1, 12, 8, 2, 6, 4, 16);
+        List<Integer> expectedOrderList = Arrays.asList(4, 6, 2, 8, 16, 12, 1);
         List<Integer> actualList = new ArrayList<>();
-        Iterator<Node<Integer>> preorderIterator = binaryTree.getPreorderIterator();
-        while (preorderIterator.hasNext()) {
-            Node<Integer> curr = preorderIterator.next();
+        Iterator<Node<Integer>> postorderIterator = binaryTree.getPostorderIterator();
+        while (postorderIterator.hasNext()) {
+            Node<Integer> curr = postorderIterator.next();
             actualList.add(curr.getValue());
         }
         assertEquals(actualList, expectedOrderList);
     }
+
 }

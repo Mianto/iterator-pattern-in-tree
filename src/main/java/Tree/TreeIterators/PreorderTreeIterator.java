@@ -21,7 +21,7 @@ public class PreorderTreeIterator<T extends Number> implements Iterator<Node<T>>
     }
 
     @Override public Node<T> next() {
-        if (nodeStack.empty()) return null;
+        if (!hasNext()) return null;
         Node<T> tmpNode = nodeStack.peek();
         nodeStack.pop();
         if (tmpNode.getRight() != null) nodeStack.push(tmpNode.getRight());

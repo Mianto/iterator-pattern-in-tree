@@ -1,6 +1,7 @@
 package Tree;
 
 import Tree.TreeIterators.InorderTreeIterator;
+import Tree.TreeIterators.PostorderTreeIterator;
 import Tree.TreeIterators.PreorderTreeIterator;
 
 import java.util.Iterator;
@@ -33,6 +34,10 @@ public class BinaryTree<T extends Number> {
     }
 
     public Iterator<Node<T>> getInorderIterator() {
-        return new InorderTreeIterator<>();
+        return new InorderTreeIterator<>(root);
+    }
+
+    public Iterator<Node<T>> getPostorderIterator() {
+        return new PostorderTreeIterator<>(root);
     }
 }
