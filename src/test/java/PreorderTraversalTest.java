@@ -1,8 +1,13 @@
+import Tree.BinaryTree;
+import Tree.Node;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PreorderTraversalTest {
     @Test
@@ -12,6 +17,55 @@ class PreorderTraversalTest {
         assertFalse(preorderIterator.hasNext(), "shouldReturnFalseForAnEmptyTree");
     }
 
+    @Test
+    public void next_shouldReturnNullForAnEmptyTree() {
+        BinaryTree<Integer> bt = new BinaryTree<>();
+        Iterator<Node<Integer>> preorderIterator = bt.getPreorderIterator();
+        assertNull(preorderIterator.next());
+    }
 
+    @Test
+    public void hasNext_shouldReturnTrueForTreeWithSingleNode() {
+        BinaryTree<Integer> bt = new BinaryTree<>();
+        bt.addNode(0);
+        Iterator<Node<Integer>> preorderIterator = bt.getPreorderIterator();
+        assertTrue(preorderIterator.hasNext());
+    }
+
+    @Test
+    public void next_shouldReturnNodeForTreeWithSingleNode() {
+        BinaryTree<Integer> bt = new BinaryTree<>();
+        bt.addNode(0);
+        Iterator<Node<Integer>> preorderIterator = bt.getPreorderIterator();
+        Node<Integer> nodeFromIterator = preorderIterator.next();
+        assertEquals(nodeFromIterator.getValue(), 0);
+        assertNull(nodeFromIterator.getLeft());
+        assertNull(nodeFromIterator.getRight());
+    }
+
+    @Test
+    public void shouldReturnNodeInCorrectOrder() {
+        BinaryTree<Integer> binaryTree = createBinaryTree();
+        List<Integer> expectedOrderList = Arrays.asList(1, 12, 8, 2, 6, 4, 16);
+        List<Integer> actualList = new ArrayList<>();
+        Iterator<Node<Integer>> preorderIterator = binaryTree.getPreorderIterator();
+        while (preorderIterator.hasNext()) {
+            Node<Integer> curr = preorderIterator.next();
+            actualList.add(curr.getValue());
+        }
+        assertEquals(actualList, expectedOrderList);
+    }
+
+    private BinaryTree<Integer> createBinaryTree() {
+        BinaryTree<Integer> binaryTree = new BinaryTree<>();
+        binaryTree.addNode(1);
+        binaryTree.addNode(12);
+        binaryTree.addNode(8);
+        binaryTree.addNode(16);
+        binaryTree.addNode(2);
+        binaryTree.addNode(6);
+        binaryTree.addNode(4);
+        return binaryTree;
+    }
 
 }

@@ -1,3 +1,5 @@
+package Tree;
+
 public class Node<T extends Number> {
     private T value;
     private Node<T> left;
@@ -34,6 +36,6 @@ public class Node<T extends Number> {
     }
 
     @Override public String toString() {
-        return "Node{" + "value=" + value + '}';
+        return "BinaryTree.Node{" + "value=" + value + '}';
     }
 }

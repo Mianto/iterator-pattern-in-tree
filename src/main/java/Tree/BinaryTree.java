@@ -1,4 +1,8 @@
-import java.util.DuplicateFormatFlagsException;
+package Tree;
+
+import Tree.TreeIterators.InorderTreeIterator;
+import Tree.TreeIterators.PreorderTreeIterator;
+
 import java.util.Iterator;
 
 public class BinaryTree<T extends Number> {
@@ -25,6 +29,10 @@ public class BinaryTree<T extends Number> {
     }
     
     public Iterator<Node<T>> getPreorderIterator() {
-        return new PreorderTreeIterator<T>(root);
+        return new PreorderTreeIterator<>(root);
+    }
+
+    public Iterator<Node<T>> getInorderIterator() {
+        return new InorderTreeIterator<>();
     }
 }
