@@ -1,3 +1,5 @@
+package IteratorTests;
+
 import Tree.BinaryTree;
 import Tree.Node;
 import org.junit.jupiter.api.Test;
